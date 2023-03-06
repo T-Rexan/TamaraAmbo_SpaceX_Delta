@@ -1,0 +1,26 @@
+$tablet-width: 48em;
+$desktop-width: 68em;
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 0.0625em}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
+@mixin notMobile {
+  @media (min-width: #{$tablet-width}) {
+    @content;
+  }
+}
+
+@mixin withHover() {
+  @media (hover: hover) {
+    @content;
+  }
+}
