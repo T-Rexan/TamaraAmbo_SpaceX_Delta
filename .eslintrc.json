@@ -1,3 +1,46 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "eslint:recommended",
+    "prettier",
+    "next/core-web-vitals",
+    "plugin:jsx-a11y/recommended"
+  ],
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "plugins": ["unused-imports", "jsx-a11y", "simple-import-sort"],
+  "parser": "@typescript-eslint/parser",
+  "rules": {
+    "quotes": ["error", "single"],
+    "semi": ["error", "always"],
+    "no-unused-vars": "off",
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "error",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    "newline-before-return": "error",
+    "no-duplicate-imports": "error",
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "no-console": "error"
+  },
+  "globals": {
+    "React": true,
+    "google": true,
+    "mount": true,
+    "mountWithRouter": true,
+    "shallow": true,
+    "shallowWithRouter": true,
+    "context": true,
+    "expect": true,
+    "jsdom": true,
+    "JSX": true
+  }
 }
