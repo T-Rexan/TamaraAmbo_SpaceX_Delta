@@ -1,0 +1,19 @@
+@import '../../../styles/themes';
+
+.details {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.grid {
+  display: grid;
+  grid-template-rows: auto auto 75px auto;
+}
+
+a {
+  @include theme() {
+    color: theme-get('link-color');
+  }
+}
