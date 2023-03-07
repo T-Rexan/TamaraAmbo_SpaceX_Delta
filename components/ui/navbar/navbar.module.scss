@@ -1,0 +1,15 @@
+@import '/styles/variables';
+@import '/styles/mixins/flex-toolkit';
+
+.header {
+  background: $link-clr-bg;
+  @include flex-center;
+}
+
+.container {
+  width: 90%;
+  max-width: 60rem;
+  padding: 0.5rem 0;
+
+  @include flex-sb-horiz;
+}

@@ -1,7 +1,10 @@
+import Image from 'next/legacy/image';
 import { useTheme } from 'next-themes';
 import React, { useEffect, useState } from 'react';
 
-function NavBar() {
+import styles from './navbar.module.scss';
+
+function Header() {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 
@@ -16,7 +19,20 @@ function NavBar() {
   const toggleTheme = () =>
     theme === 'light' ? setTheme('dark') : setTheme('light');
 
-  return <button onClick={toggleTheme}>ClickMe</button>;
+  return (
+    <header className={styles.header}>
+      <div className={styles.container}>
+        <Image
+          src={'/SpaceX_Logo_Black.png'}
+          alt="SpaceX logo"
+          objectFit="contain"
+          height={50}
+          width={150}
+        />
+        <button onClick={toggleTheme}>ClickMe</button>
+      </div>
+    </header>
+  );
 }
 
-export default NavBar;
+export default Header;

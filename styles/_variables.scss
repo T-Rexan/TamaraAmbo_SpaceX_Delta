@@ -1,9 +1,10 @@
-/* Light Theme Colors */
-$color-bg-light: #f2f2f2;
-$color-text-light: black;
-$color-link-light: #002fff;
+//colors
+$background: var(--background);
+$on-background: var(--on-background);
+$link-clr: var(--link-color-text);
+$link-clr-bg: var(--link-color-bg);
+$card-clr-bg: var(--card-clr-bg);
 
-/* Dark Theme Colors */
-$color-bg-dark: #001329;
-$color-text-dark: white;
-$color-link-dark: #64ff00;
+//box shadow
+
+$card-box-shadow: var(--card-box-shadow);

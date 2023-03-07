@@ -11,9 +11,10 @@ type LaunchItemProps = {
   name: string;
   img: string;
   details: string;
+  date: string;
 };
 
-const LaunchItem: FC<LaunchItemProps> = ({ id, name, img, details }) => {
+const LaunchItem: FC<LaunchItemProps> = ({ id, name, img, details, date }) => {
   return (
     <Card>
       <div className={styles.grid}>
@@ -24,9 +25,12 @@ const LaunchItem: FC<LaunchItemProps> = ({ id, name, img, details }) => {
           height={500}
           layout="responsive"
         />
-        <h1>{name}</h1>
+        <h3 className={styles.title}>{name}</h3>
+        <p className={styles.date}>{date}</p>
         <p className={styles.details}>{details}</p>
-        <Link href={`/${id}`}>Learn more</Link>
+        <Link className={styles.link} href={`/${id}`}>
+          Learn more
+        </Link>
       </div>
     </Card>
   );

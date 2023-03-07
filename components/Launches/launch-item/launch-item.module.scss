@@ -1,4 +1,9 @@
-@import '../../../styles/themes';
+@import '/styles/variables';
+
+.title,
+.details {
+  margin-top: 0.5rem;
+}
 
 .details {
   display: -webkit-box;
@@ -9,11 +14,37 @@
 
 .grid {
   display: grid;
-  grid-template-rows: auto auto 75px auto;
+  grid-template-rows: auto auto auto 80px auto;
+  padding: 1.25rem;
 }
 
-a {
-  @include theme() {
-    color: theme-get('link-color');
-  }
+.title {
+  text-align: center;
+  line-height: 1;
+}
+
+.date {
+  opacity: 0.6;
+  font-size: 0.9375rem;
+  text-align: center;
+  margin-top: 0.25rem;
+}
+
+.link {
+  color: $link-clr;
+  background: $link-clr-bg;
+  width: 50%;
+  place-self: center;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+  line-height: 1;
+
+  margin-top: 1rem;
+  padding: 0.65rem 0.5rem;
+}
+
+.link:hover,
+.link:focus {
+  opacity: 0.85;
 }

@@ -1,8 +1,24 @@
 @import 'variables';
-@import 'themes';
 @import 'mixins/flex-toolkit';
 @import 'center';
 
+:root {
+  --background: #fff;
+  --on-background: #000;
+  --link-color-text: #fff;
+  --link-color-bg: #6200ee;
+  --card-clr-bg: var(--background);
+  --card-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme='dark'] {
+  --background: #121212;
+  --on-background: #fff;
+  --link-color-text: #000;
+  --link-color-bg: #bb68fc;
+  --card-clr-bg: #2d2d2d;
+  --card-box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2);
+}
 /* Box sizing rules */
 *,
 * ::before,
@@ -48,10 +64,8 @@ body {
   text-rendering: optimizeSpeed;
   line-height: 1.5;
 
-  @include theme() {
-    color: theme-get('text-color');
-    background-color: theme-get('bg-color');
-  }
+  background-color: $background;
+  color: $on-background;
 }
 
 /* A elements that don't have a class get default styles */
@@ -61,7 +75,7 @@ a:not([class]) {
 main {
   width: 90%;
   max-width: 60rem;
-  margin: 5rem auto;
+  margin: 3rem auto;
 }
 
 a {

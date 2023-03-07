@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { FC } from 'react';
 
 import Footer from '../footer';
-import NavBar from '../navbar';
+import Header from '../navbar';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -14,8 +14,8 @@ const Layout: FC<LayoutProps> = ({ children }) => {
       <Head>
         <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
+      <Header />
       <div className="main-container">
-        <NavBar />
         <main>{children}</main>
         <Footer />
       </div>
