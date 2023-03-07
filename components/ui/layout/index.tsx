@@ -14,7 +14,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
       <Head>
         <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
-      <div className="main-container">
+      <div>
         <NavBar />
         <main>{children}</main>
         <Footer />

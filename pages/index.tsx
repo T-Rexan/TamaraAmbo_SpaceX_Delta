@@ -8,7 +8,9 @@ const Home: NextPage = () => {
   const [data] = useFetch('https://api.spacexdata.com/v4/launches');
 
   return (
-    <>{!data ? <Loading></Loading> : <LaunchList launchesList={data} />}</>
+    <div>
+      {!data ? <Loading></Loading> : <LaunchList launchesList={data} />}
+    </div>
   );
 };
 
