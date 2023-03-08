@@ -19,7 +19,7 @@ const LaunchItem: FC<LaunchItemProps> = ({ id, name, img, details, date }) => {
     <Card>
       <div className={styles.grid}>
         <Image
-          src={img || '/no-image.png'}
+          src={img }
           alt={name}
           width={500}
           height={500}
