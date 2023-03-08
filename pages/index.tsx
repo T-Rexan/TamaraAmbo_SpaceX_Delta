@@ -16,7 +16,17 @@ type LaunchItemProps = {
 };
 
 const Home: NextPage = () => {
-  const [data] = useFetch('https://api.spacexdata.com/v4/launches');
+  const { data, isLoading, error } = useFetch(
+    'https://api.spacexdata.com/v4/launches',
+  );
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
 
   function formatDate(date_local: string) {
     return format(new Date(date_local), 'dd MMMM yyyy');
@@ -24,25 +34,21 @@ const Home: NextPage = () => {
 
   return (
     <div>
-      {!data ? (
-        <Loading></Loading>
-      ) : (
-        <div className={styles.grid}>
-          {data?.map(
-            ({ id, name, links, details, date_local }: LaunchItemProps) => (
-              <LaunchItem
-                key={id}
-                name={name}
-                id={id}
-                img={links.patch.small}
-                details={details}
-                date={formatDate(date_local)}
-              />
-            ),
-          )}
-          ;
-        </div>
-      )}
+      <div className={styles.grid}>
+        {data?.map(
+          ({ id, name, links, details, date_local }: LaunchItemProps) => (
+            <LaunchItem
+              key={id}
+              name={name}
+              id={id}
+              img={links.patch.small}
+              details={details}
+              date={formatDate(date_local)}
+            />
+          ),
+        )}
+        ;
+      </div>
     </div>
   );
 };

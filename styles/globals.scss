@@ -84,7 +84,7 @@ a {
 }
 
 .main-container {
-  height: 100vh;
+  height: calc(100vh - 50px);
   margin: 0;
   @include flex-column;
 }

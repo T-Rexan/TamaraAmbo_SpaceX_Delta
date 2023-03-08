@@ -1,0 +1,51 @@
+/* Toggle container */
+.toggle {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+
+/* Toggle input */
+.toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Toggle slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #d8d8d8; /* Light gray */
+  border-radius: 34px;
+  transition: 0.4s;
+}
+
+/* Toggle slider::before pseudo-element */
+.slider::before {
+  position: absolute;
+  content: '';
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 2px;
+  background-color: #bfbfbf; /* Gray */
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+/* Toggle input:checked + slider */
+.toggle input:checked + .slider {
+  background-color: #4d4d4d; /* Dark gray */
+}
+
+/* Toggle input:checked + slider::before */
+.toggle input:checked + .slider::before {
+  transform: translateX(20px);
+  background-color: #8c8c8c; /* Lighter gray */
+}

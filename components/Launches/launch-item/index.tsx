@@ -26,7 +26,7 @@ const LaunchItem: FC<LaunchItemProps> = ({ id, name, img, details, date }) => {
           layout="responsive"
         />
         <h3 className={styles.title}>{name}</h3>
-        <p className={styles.date}>{date}</p>
+        <p className={styles.title}>{date}</p>
         <p className={styles.details}>{details}</p>
         <Link className={styles.link} href={`/${id}`}>
           Learn more
