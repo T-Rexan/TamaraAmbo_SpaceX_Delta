@@ -3,6 +3,8 @@ import { FC } from 'react';
 
 import formatDate from '@/utils/formatDate';
 
+import ArticleIcon from '../../../public/icons/article-icon.svg';
+import WikipediaIcon from '../../../public/icons/wikipedia-icon.svg';
 import YoutubeIcon from '../../../public/icons/yt-icon.svg';
 import RocketInformation from '../rocket-information';
 import styles from './launch-details.module.scss';
@@ -42,6 +44,16 @@ const LaunchDetails: FC<LaunchDetailsProps> = ({
         {links?.video_link && (
           <Link className={styles.icon} href={links?.video_link}>
             <YoutubeIcon />{' '}
+          </Link>
+        )}
+        {links?.article_link && (
+          <Link className={styles.icon} href={links?.article_link}>
+            <ArticleIcon />{' '}
+          </Link>
+        )}
+        {links?.wikipedia && (
+          <Link className={styles.icon} href={links?.wikipedia}>
+            <WikipediaIcon />{' '}
           </Link>
         )}
       </div>

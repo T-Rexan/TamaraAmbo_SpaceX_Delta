@@ -15,16 +15,20 @@
 
 .details {
   margin-top: 1rem;
-  font-size: 1.25rem;
+  font-size: 1.125rem;
 }
 .icon {
+  &:hover,
+  &:focus {
+    svg {
+      path {
+        fill: $link-clr-bg;
+      }
+    }
+  }
   svg {
     path {
       fill: $on-background;
-      &:hover,
-      &:focus {
-        fill: $link-clr-bg;
-      }
     }
   }
 }
@@ -32,4 +36,7 @@
 .links {
   display: flex;
   margin-top: 1rem;
+  a:not(:first-child) {
+    margin-left: 1rem;
+  }
 }

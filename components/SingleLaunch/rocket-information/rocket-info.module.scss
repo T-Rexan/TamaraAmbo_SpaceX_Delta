@@ -44,6 +44,7 @@
 .rocketDimension {
   @include flex-center-vert;
   justify-content: space-between;
+  flex-wrap: wrap;
   padding-right: 0.65rem;
   font-size: 0.875rem;
   .icon {
@@ -58,6 +59,7 @@
 }
 
 .rocketDescription {
+  margin-top: 1rem;
   padding: 0 0.65rem;
   p {
     margin-top: 0.5rem;

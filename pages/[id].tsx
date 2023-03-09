@@ -1,11 +1,13 @@
 import { GetServerSideProps, NextPage } from 'next';
 import Image from 'next/legacy/image';
+import Link from 'next/link';
 import { ParsedUrlQuery } from 'querystring';
 import React from 'react';
 
 import LaunchDetails from '@/components/SingleLaunch/launch-details';
 import useFetch from '@/hooks/useFetch';
 
+import BackIcon from '../public/icons/back-icon.svg';
 import styles from './single-launch.module.scss';
 
 interface IParams extends ParsedUrlQuery {
@@ -32,23 +34,34 @@ const DetailPage: NextPage<DetailPageProps> = ({ id }) => {
 
   return (
     <div className={styles.container}>
-      <Image
-        src={singleLaunch?.links?.mission_patch || '/no-image.png'}
-        alt={`Patch for the ${singleLaunch?.mission_name}`}
-        height={500}
-        width={500}
-        layout="responsive"
-      />
-      <LaunchDetails
-        date={singleLaunch?.launch_date_local}
-        name={singleLaunch?.mission_name}
-        success={singleLaunch?.launch_success}
-        details={singleLaunch?.details}
-        links={singleLaunch?.links}
-        rocketId={singleLaunch?.rocket.rocket_id}
-        rocketName={singleLaunch?.rocket.rocket_name}
-        rocketType={singleLaunch?.rocket.rocket_type}
-      />
+      <div>
+        <Image
+          className={styles.image}
+          src={singleLaunch?.links?.mission_patch || '/no-image.png'}
+          alt={`Patch for the ${singleLaunch?.mission_name}`}
+          height={500}
+          width={500}
+          layout="responsive"
+        />
+        <Link className={styles.backLink} href="/">
+          <span className={styles.icon}>
+            <BackIcon />
+          </span>
+          <span className={styles.backLinkText}>Back</span>
+        </Link>
+      </div>
+      <div className={styles.launchGrid}>
+        <LaunchDetails
+          date={singleLaunch?.launch_date_local}
+          name={singleLaunch?.mission_name}
+          success={singleLaunch?.launch_success}
+          details={singleLaunch?.details}
+          links={singleLaunch?.links}
+          rocketId={singleLaunch?.rocket.rocket_id}
+          rocketName={singleLaunch?.rocket.rocket_name}
+          rocketType={singleLaunch?.rocket.rocket_type}
+        />
+      </div>
     </div>
   );
 };

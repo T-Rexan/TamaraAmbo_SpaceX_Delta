@@ -1,14 +1,60 @@
 @import '/styles/mixins/media-query';
+@import '/styles/variables';
+@import '/styles/mixins/flex-toolkit';
 
 .container {
   display: grid;
-  grid-template-rows: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(3, minmax(0, auto));
   gap: 1.5rem;
+}
+
+.image {
+  grid-row: 1;
+  grid-column: 1;
+}
+
+.launchGrid {
+  grid-row: 2 / span 2;
+}
+
+.icon {
+  svg {
+    path {
+      fill: $on-background;
+    }
+  }
+}
+
+.backLink {
+  width: 100%;
+  display: flex;
+  margin-top: 1rem;
+  opacity: 0.6;
+  @include flex-center;
+  &:hover,
+  &:focus {
+    opacity: 1;
+  }
+}
+
+.backLinkText {
+  font-size: 1.75rem;
+  margin-left: 0.5rem;
+  margin-bottom: 10px;
 }
 
 @include notMobile {
   .container {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-rows: none;
+    grid-template-rows: repeat(2, minmax(0, auto));
+  }
+  .image {
+    grid-row: 1;
+    grid-column: 1;
+  }
+
+  .launchGrid {
+    grid-row: 1 / span 2;
+    grid-column: 2;
   }
 }
