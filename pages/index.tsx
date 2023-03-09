@@ -1,14 +1,14 @@
-import { format } from 'date-fns';
 import { NextPage } from 'next';
 import { useEffect, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 import LaunchItem from '@/components/Launches/launch-item';
+import formatDate from '@/utils/formatDate';
 
 import styles from './home.module.scss';
 
 type LaunchItemProps = {
-  id: string;
+  flight_number: string;
   name: string;
   links: any;
   details: string;
@@ -42,10 +42,6 @@ const Home: NextPage = () => {
     fetchLaunches(newOffset);
   };
 
-  //can move to a util func
-  function formatDate(date_local: string) {
-    return format(new Date(date_local), 'dd MMMM yyyy');
-  }
   console.log(launches);
 
   useEffect(() => {
@@ -64,16 +60,16 @@ const Home: NextPage = () => {
       <div className={styles.grid}>
         {launches?.map(
           ({
-            id,
+            flight_number,
             name,
             links,
             details,
             launch_date_local,
           }: LaunchItemProps) => (
             <LaunchItem
-              key={id}
+              key={flight_number}
               name={name}
-              id={id}
+              id={flight_number}
               img={links.mission_patch || '/no-image.png'}
               details={details}
               date={formatDate(launch_date_local)}

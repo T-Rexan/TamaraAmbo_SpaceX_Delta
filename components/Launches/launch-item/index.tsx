@@ -19,14 +19,14 @@ const LaunchItem: FC<LaunchItemProps> = ({ id, name, img, details, date }) => {
     <Card>
       <div className={styles.grid}>
         <Image
-          src={img }
+          src={img}
           alt={name}
           width={500}
           height={500}
           layout="responsive"
         />
         <h3 className={styles.title}>{name}</h3>
-        <p className={styles.title}>{date}</p>
+        <p className={styles.date}>{date}</p>
         <p className={styles.details}>{details}</p>
         <Link className={styles.link} href={`/${id}`}>
           Learn more

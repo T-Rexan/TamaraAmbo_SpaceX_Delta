@@ -19,8 +19,13 @@ const ToggleButton: FC = () => {
     theme === 'light' ? setTheme('dark') : setTheme('light');
 
   return (
-    <label className={styles.toggle}>
-      <input type="checkbox" onClick={toggleTheme} checked={theme === 'dark'} />
+    <label htmlFor="toggle" className={styles.toggle}>
+      <input
+        id="toggle"
+        type="checkbox"
+        onChange={toggleTheme}
+        checked={theme === 'dark'}
+      />
       <span className={styles.slider}></span>
     </label>
   );

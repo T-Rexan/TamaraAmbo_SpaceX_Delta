@@ -1,0 +1,71 @@
+@import '/styles/variables';
+@import '/styles/mixins/flex-toolkit';
+@import '/styles/mixins/media-query';
+
+.center {
+  @include flex-center-vert;
+}
+.container {
+  @include flex-column;
+}
+.rocketInfo {
+  @include flex-center-vert;
+  justify-content: space-between;
+  font-size: 1rem;
+  border: 2px solid $on-background;
+  padding: 0.75rem 0.65rem;
+  margin-top: 1rem;
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  svg > path {
+    fill: $on-background;
+  }
+}
+
+.showDetails {
+  background-color: transparent;
+  border: transparent;
+  cursor: pointer;
+
+  svg {
+    &:hover,
+    &:focus {
+      path {
+        fill: $link-clr-bg;
+      }
+    }
+  }
+}
+
+.rocketDimension {
+  @include flex-center-vert;
+  justify-content: space-between;
+  padding-right: 0.65rem;
+  font-size: 0.875rem;
+  .icon {
+    transform: scale(0.5);
+  }
+}
+
+.hiddenInfo {
+  border: 2px solid $on-background;
+  padding: 0.75rem 0.25rem;
+  font-size: 1rem;
+}
+
+.rocketDescription {
+  padding: 0 0.65rem;
+  p {
+    margin-top: 0.5rem;
+  }
+}
+
+@include notMobile {
+  .rocketInfo {
+    font-size: 1.125rem;
+  }
+}
