@@ -25,7 +25,6 @@ const RocketInformation: FC<RocketInformationProps> = ({
   const { data, isLoading, error } = useFetch(
     rocketId && `https://api.spacexdata.com/v3/rockets/${rocketId}`,
   );
-  console.log(data);
 
   const { mass, height, diameter, description, success_rate_pct } = data || {};
 

@@ -26,7 +26,6 @@ const DetailPage: NextPage<DetailPageProps> = ({ id }) => {
 
   if (isLoading) return <p>Loading</p>;
   if (error) return <p>Error</p>;
-  console.log(data);
 
   if (data) {
     singleLaunch = data[0];
@@ -42,6 +41,7 @@ const DetailPage: NextPage<DetailPageProps> = ({ id }) => {
           height={500}
           width={500}
           layout="responsive"
+          priority
         />
         <Link className={styles.backLink} href="/">
           <span className={styles.icon}>

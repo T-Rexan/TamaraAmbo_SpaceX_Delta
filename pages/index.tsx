@@ -9,7 +9,7 @@ import styles from './home.module.scss';
 
 type LaunchItemProps = {
   flight_number: string;
-  name: string;
+  mission_name: string;
   links: any;
   details: string;
   launch_date_local: string;
@@ -32,6 +32,7 @@ const Home: NextPage = () => {
       } else {
         setLaunches((prevLaunches) => [...prevLaunches, ...data]);
       }
+      console.log(data);
     } catch (error) {
       console.log(error);
     }
@@ -42,11 +43,7 @@ const Home: NextPage = () => {
     fetchLaunches(newOffset);
   };
 
-  console.log(launches);
-
   useEffect(() => {
-    console.log(1);
-
     fetchLaunches(initialOffset);
   }, []);
 
@@ -59,16 +56,19 @@ const Home: NextPage = () => {
     >
       <div className={styles.grid}>
         {launches?.map(
-          ({
-            flight_number,
-            name,
-            links,
-            details,
-            launch_date_local,
-          }: LaunchItemProps) => (
+          (
+            {
+              flight_number,
+              mission_name,
+              links,
+              details,
+              launch_date_local,
+            }: LaunchItemProps,
+            index,
+          ) => (
             <LaunchItem
-              key={flight_number}
-              name={name}
+              key={index}
+              name={mission_name}
               id={flight_number}
               img={links.mission_patch || '/no-image.png'}
               details={details}

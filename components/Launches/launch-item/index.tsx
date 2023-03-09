@@ -24,6 +24,7 @@ const LaunchItem: FC<LaunchItemProps> = ({ id, name, img, details, date }) => {
           width={500}
           height={500}
           layout="responsive"
+          priority
         />
         <h3 className={styles.title}>{name}</h3>
         <p className={styles.date}>{date}</p>
