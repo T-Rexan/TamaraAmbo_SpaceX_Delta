@@ -10,7 +10,7 @@ const nextConfig = {
 
     return config;
   },
-  reactStrictMode: true,
+  reactStrictMode: false,
   images: {
     domains: ['images2.imgbox.com', 'i.imgur.com', 'imgur.com'],
   },
