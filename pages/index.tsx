@@ -56,18 +56,15 @@ const Home: NextPage = () => {
     >
       <div className={styles.grid}>
         {launches?.map(
-          (
-            {
-              flight_number,
-              mission_name,
-              links,
-              details,
-              launch_date_local,
-            }: LaunchItemProps,
-            index,
-          ) => (
+          ({
+            flight_number,
+            mission_name,
+            links,
+            details,
+            launch_date_local,
+          }: LaunchItemProps) => (
             <LaunchItem
-              key={index}
+              key={flight_number}
               name={mission_name}
               id={flight_number}
               img={links.mission_patch || '/no-image.png'}
