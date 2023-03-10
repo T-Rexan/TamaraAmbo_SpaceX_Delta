@@ -1,9 +1,54 @@
 @import 'styles/mixins/media-query';
+@import 'styles/mixins/_flex-toolkit.scss';
+@import 'styles/_variables.scss';
 
 .grid {
   display: grid;
   grid-template-columns: repeat(1, minmax(0, 1fr));
   gap: 1.5rem;
+}
+
+.search {
+  @include flex-center-vert;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.input {
+  border-radius: 4px;
+  border: 1px solid $on-background;
+  width: 100%;
+  height: 100%;
+  padding: 0.8rem 0.5rem;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.icon {
+  @include flex-center-vert;
+  svg {
+    transform: scale(0.6);
+    opacity: 0.7;
+    path {
+      fill: $on-background;
+    }
+  }
+}
+
+.search:has(.cancelBttn) {
+  .input {
+    padding-right: 40px;
+  }
+}
+
+.cancelBttn {
+  border: transparent;
+  background-color: transparent;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  svg {
+    transform: scale(0.7);
+  }
 }
 
 @include tablet {
