@@ -5,6 +5,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import LaunchItem from '@/components/Launches/launch-item';
 import formatDate from '@/utils/formatDate';
 
+import Error from '../components/ui/error';
 import CancelIcon from '../public/icons/close-icon.svg';
 import styles from './home.module.scss';
 
@@ -20,10 +21,10 @@ type Launch = {
 
 const Home: NextPage = () => {
   const inputRef = useRef<HTMLInputElement>(null);
-  const [launches, setLaunches] = useState<Launch[]>([]);
-  const [filteredLaunches, setFilteredLaunches] = useState<Launch[]>([]);
+  const [launches, setLaunches] = useState([]);
+  const [filteredLaunches, setFilteredLaunches] = useState([]);
   const [error, setError] = useState<Error | null>(null);
-  const [filteredLaunchesAll, setFilteredLaunchesAll] = useState<Launch[]>([]);
+  const [filteredLaunchesAll, setFilteredLaunchesAll] = useState([]);
   const [hasMore, setHasMore] = useState(true);
   const [isSearch, setIsSearch] = useState(false);
   const limit = 20;
@@ -68,7 +69,7 @@ const Home: NextPage = () => {
         setFilteredLaunchesAll(filteredLaunchesArray);
         setFilteredLaunches(filteredLaunchesArray.slice(0, limit));
       } catch (error) {
-        console.error(error);
+        setError(error as Error);
       }
     }
   };
@@ -88,7 +89,7 @@ const Home: NextPage = () => {
   };
 
   if (error) {
-    return <>{error?.message}</>;
+    return <Error>{error?.message}</Error>;
   }
 
   return (

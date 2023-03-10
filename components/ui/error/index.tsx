@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import styles from './error.module.css';
+import styles from './error.module.scss';
 
 interface ErrorProps {
   children: React.ReactNode;

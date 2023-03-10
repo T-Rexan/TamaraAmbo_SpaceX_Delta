@@ -7,6 +7,8 @@ import React from 'react';
 import LaunchDetails from '@/components/SingleLaunch/launch-details';
 import useFetch from '@/hooks/useFetch';
 
+import Error from '../components/ui/error';
+import Loading from '../components/ui/loading';
 import BackIcon from '../public/icons/back-icon.svg';
 import styles from './single-launch.module.scss';
 
@@ -24,8 +26,8 @@ const DetailPage: NextPage<DetailPageProps> = ({ id }) => {
   );
   let singleLaunch;
 
-  if (isLoading) return <p>Loading</p>;
-  if (error) return <p>Error</p>;
+  if (isLoading) return <Loading />;
+  if (error) return <Error>{error?.message}</Error>;
 
   if (data) {
     singleLaunch = data[0];

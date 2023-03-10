@@ -8,6 +8,8 @@ import CircleIcon from '../../../public/icons/circle-icon.svg';
 import HeightIcon from '../../../public/icons/height-icon.svg';
 import RocketIcon from '../../../public/icons/rocket-icon.svg';
 import WeightIcon from '../../../public/icons/weight-icon.svg';
+import Error from '../../ui/error';
+import Loading from '../../ui/loading';
 import styles from './rocket-info.module.scss';
 
 type RocketInformationProps = {
@@ -28,9 +30,9 @@ const RocketInformation: FC<RocketInformationProps> = ({
 
   const { mass, height, diameter, description, success_rate_pct } = data || {};
 
-  if (error) return <p>Error</p>;
+  if (error) return <Error>Error</Error>;
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <Loading />;
 
   return (
     <div className={styles.container}>
