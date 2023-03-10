@@ -2,8 +2,7 @@ import Image from 'next/legacy/image';
 import Link from 'next/link';
 import { FC } from 'react';
 
-import Card from '@/components/ui/card';
-
+import Card from '../../ui/card';
 import styles from './launch-item.module.scss';
 
 type LaunchItemProps = {
