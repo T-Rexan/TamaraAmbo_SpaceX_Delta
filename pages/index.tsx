@@ -8,20 +8,22 @@ import formatDate from '@/utils/formatDate';
 import CancelIcon from '../public/icons/close-icon.svg';
 import styles from './home.module.scss';
 
-type LaunchItemProps = {
+type Launch = {
   flight_number: string;
   mission_name: string;
-  links: any;
+  links: {
+    mission_patch?: string;
+  };
   details: string;
   launch_date_local: string;
 };
 
 const Home: NextPage = () => {
-  const inputRef = useRef();
-  const [launches, setLaunches] = useState([]);
-  const [filteredLaunches, setFilteredLaunches] = useState([]);
-  const [error, setError] = useState(null);
-  const [filteredLaunchesAll, setFilteredLaunchesAll] = useState([]);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [launches, setLaunches] = useState<Launch[]>([]);
+  const [filteredLaunches, setFilteredLaunches] = useState<Launch[]>([]);
+  const [error, setError] = useState<Error | null>(null);
+  const [filteredLaunchesAll, setFilteredLaunchesAll] = useState<Launch[]>([]);
   const [hasMore, setHasMore] = useState(true);
   const [isSearch, setIsSearch] = useState(false);
   const limit = 20;
@@ -39,7 +41,7 @@ const Home: NextPage = () => {
         setLaunches((prevLaunches) => [...prevLaunches, ...data]);
       }
     } catch (error) {
-      setError(error);
+      setError(error as Error);
     }
   };
 
@@ -52,33 +54,35 @@ const Home: NextPage = () => {
     fetchLaunches(initialOffset);
   }, []);
 
-  const searchHandler = async (e) => {
-    if (e.key === 'Enter') {
+  const searchHandler = async (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter' && inputRef.current?.value) {
       setIsSearch(true);
       setLaunches([]);
       try {
         const response = await fetch('https://api.spacexdata.com/v3/launches');
         const data = await response.json();
-        const stringQuery = inputRef.current?.value;
-        const filteredLaunchesArray = data.filter((launch) =>
-          launch.mission_name.toLowerCase().includes(stringQuery.toLowerCase()),
+        const stringQuery = inputRef.current.value.toLowerCase();
+        const filteredLaunchesArray = data.filter((launch: Launch) =>
+          launch.mission_name.toLowerCase().includes(stringQuery),
         );
         setFilteredLaunchesAll(filteredLaunchesArray);
-        setFilteredLaunches(filteredLaunchesArray.slice(0, 20));
+        setFilteredLaunches(filteredLaunchesArray.slice(0, limit));
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     }
   };
 
   const loadMoreFiltered = () => {
     const newOffset = filteredLaunches.length;
-    const newFilteredArray = filteredLaunchesAll.slice(0, newOffset + 20);
+    const newFilteredArray = filteredLaunchesAll.slice(0, newOffset + limit);
     setFilteredLaunches(newFilteredArray);
   };
 
   const cancelHandler = () => {
-    inputRef.current.value = '';
+    if (inputRef.current) {
+      inputRef.current.value = '';
+    }
     fetchLaunches(0);
     setIsSearch(false);
   };
@@ -124,7 +128,7 @@ const Home: NextPage = () => {
                   links,
                   details,
                   launch_date_local,
-                }: LaunchItemProps) => (
+                }: Launch) => (
                   <LaunchItem
                     key={flight_number}
                     name={mission_name}
@@ -142,7 +146,7 @@ const Home: NextPage = () => {
                   links,
                   details,
                   launch_date_local,
-                }: LaunchItemProps) => (
+                }: Launch) => (
                   <LaunchItem
                     key={flight_number}
                     name={mission_name}
