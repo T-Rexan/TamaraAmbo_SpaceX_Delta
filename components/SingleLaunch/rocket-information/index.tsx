@@ -1,7 +1,6 @@
 import { FC, useState } from 'react';
 
-import useFetch from '@/hooks/useFetch';
-
+import useFetch from '../../../hooks/useFetch';
 import ArrowDown from '../../../public/icons/arrow-down.svg';
 import ArrowUp from '../../../public/icons/arrow-up.svg';
 import CircleIcon from '../../../public/icons/circle-icon.svg';

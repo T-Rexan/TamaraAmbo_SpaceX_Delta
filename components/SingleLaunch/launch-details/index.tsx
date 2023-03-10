@@ -1,11 +1,10 @@
 import Link from 'next/link';
 import { FC } from 'react';
 
-import formatDate from '@/utils/formatDate';
-
 import ArticleIcon from '../../../public/icons/article-icon.svg';
 import WikipediaIcon from '../../../public/icons/wikipedia-icon.svg';
 import YoutubeIcon from '../../../public/icons/yt-icon.svg';
+import formatDate from '../../../utils/formatDate';
 import RocketInformation from '../rocket-information';
 import styles from './launch-details.module.scss';
 
