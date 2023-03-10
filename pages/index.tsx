@@ -20,6 +20,7 @@ const Home: NextPage = () => {
   const inputRef = useRef();
   const [launches, setLaunches] = useState([]);
   const [filteredLaunches, setFilteredLaunches] = useState([]);
+  const [error, setError] = useState(null);
   const [filteredLaunchesAll, setFilteredLaunchesAll] = useState([]);
   const [hasMore, setHasMore] = useState(true);
   const [isSearch, setIsSearch] = useState(false);
@@ -38,7 +39,7 @@ const Home: NextPage = () => {
         setLaunches((prevLaunches) => [...prevLaunches, ...data]);
       }
     } catch (error) {
-      console.log(error);
+      setError(error);
     }
   };
 
@@ -81,6 +82,10 @@ const Home: NextPage = () => {
     fetchLaunches(0);
     setIsSearch(false);
   };
+
+  if (error) {
+    return <>{error?.message}</>;
+  }
 
   return (
     <>
