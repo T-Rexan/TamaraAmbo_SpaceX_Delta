@@ -4,6 +4,7 @@
 .header {
   background: $link-clr-bg;
   @include flex-center;
+  padding: 0.5rem 0;
 }
 
 .container {
@@ -12,4 +13,12 @@
 
   @include flex-sb-horiz;
   @include flex-center-vert;
+}
+
+.icon {
+  svg {
+    path {
+      fill: $on-background;
+    }
+  }
 }

@@ -21,8 +21,10 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  svg > path {
-    fill: $on-background;
+  svg {
+    path {
+      fill: $on-background;
+    }
   }
 }
 
